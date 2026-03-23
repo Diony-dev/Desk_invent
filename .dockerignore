@@ -1,0 +1,16 @@
+env/
+venv/
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.git/
+.gitignore
+.dockerignore
+.vscode/
+.idea/
+src/out*.json
+README.md

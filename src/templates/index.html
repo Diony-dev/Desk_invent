@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petromovil Ticket Generator</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="main-header">
+        <h2>Petromovil | Generador de Solicitudes Oficial</h2>
+      </header>
+
+      <div class="grid-layout">
+        <section class="card ticket-form">
+          <div class="card-header">📋 Información Obligatoria</div>
+
+          <div class="form-group">
+            <label>Nombre del Contacto *</label>
+            <input
+              type="text"
+              id="contactName"
+              placeholder="Ej: Juan Pérez"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Asunto *</label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="Resumen de la solicitud"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Estado *</label>
+              <select id="status">
+                <option value="Solicitado">Solicitado</option>
+                <option value="En Espera">En Espera</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Departamento (Sistema) *</label>
+              <select id="departmentId">
+                <option value="1307304000000514432">Administración</option>
+                <option value="1307304000000514435">Operaciones</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Departamento Solicitante *</label>
+              <select id="cf_departamento_solicitante">
+                <option value="Almacen">Almacén</option>
+                <option value="Mantenimiento">Mantenimiento</option>
+                <option value="IT">IT</option>
+                <option value="Taller">Taller</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fecha Requerida *</label>
+              <input type="date" id="cf_fecha_requerida" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Motivo de Solicitud *</label>
+            <textarea id="cf_motivo_de_solicitud" rows="3" required></textarea>
+          </div>
+        </section>
+
+        <section class="card inventory-form">
+          <div class="card-header">📦 Selección de Insumos (Inventory)</div>
+          <div class="search-box">
+            <div style="display: flex; gap: 10px">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Buscar monitores, filtros, etc..."
+                style="flex: 1"
+              />
+              <button
+                type="button"
+                id="btn-add-manual"
+                class="btn-secondary"
+                style="white-space: nowrap"
+              >
+                + Agregar No Registrado
+              </button>
+            </div>
+            <div id="suggestions" class="dropdown-content"></div>
+          </div>
+
+          <div class="table-container">
+            <table id="items-table">
+              <thead>
+                <tr>
+                  <th>Artículo</th>
+                  <th>Stock</th>
+                  <th>Cantidad Solicitada</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <footer class="actions">
+        <button id="btn-submit" class="btn-primary">
+          Registrar Ticket en Petromovil
+        </button>
+      </footer>
+    </div>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+  </body>
+</html>
