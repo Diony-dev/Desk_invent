@@ -197,7 +197,7 @@ function setupSubmitButton() {
 
       const stock = item.available_stock || 0;
       // Format: "Name - Cantidad Requerida: X - Stock Disponible: Y\n"
-      articulosString += `${item.name} - Cantidad Requerida: ${qty} - Stock: ${stock}|`;
+      articulosString += `ID:${item.item_id} - ${item.name} - Cantidad Requerida: ${qty} - Stock: ${stock}|`;
     });
 
     if (hasInvalidQty) {
